@@ -1,0 +1,20 @@
+﻿@using CsApp.Application.Features.Commands.CreateComplaint
+@model CreateComplaintCommand
+@{
+    ViewData["Title"] = "ComplaintAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Şikayet Ekle</h1>
+
+<form class="form-group" method="post">
+    <br />
+    <h6>Başlık</h6>
+    <input type="text" name="Title" maxlength="50" required   class="form-control">
+    <br />
+    <h6>İçerik</h6>
+     <input type="text" name="Content" maxlength="200" required  class="form-control">
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+</form>
+

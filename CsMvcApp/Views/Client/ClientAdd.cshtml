@@ -1,0 +1,33 @@
+﻿@using CsApp.Application.Features.Commands.CreateClient
+@model CreateClientCommand
+
+@{
+    ViewData["Title"] = "CilentAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Müşteri Ekle</h2>
+<br />
+<form class="form-group" method="post">
+    <br />
+    <h6>Ad</h6>
+    <input type="text" name="Name" maxlength="50" required class="form-control">
+    <br />
+    <h6>Soyad</h6>
+    <input type="text" name="Surname" maxlength="50" required class="form-control">
+    <br />
+    <h6>Email</h6>
+    <input type="email" name="Email" maxlength="60" required class="form-control">
+    <br />
+    <h6>Cinsiyet</h6>
+    <input type="text" name="Gender" maxlength="5" required class="form-control">
+    <br />
+    <h6>Telefon</h6>
+    <input type="text"  name="PhoneNumber" maxlength="20" required class="form-control">
+    <br />
+    <h6>Adres</h6>
+    <input type="text" name="Address" maxlength="160" required class="form-control">
+    <br />
+    <button class="btn btn-primary">Ekle</button>
+</form>

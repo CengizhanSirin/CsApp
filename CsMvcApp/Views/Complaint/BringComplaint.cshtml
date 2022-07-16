@@ -1,0 +1,21 @@
+﻿@model  CsApp.Application.Dto.ComplaintViewDto
+@{
+    ViewData["Title"] = "BringComplaint";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1>Müşteri Şikayet Güncelle</h1>
+<br />
+@using (Html.BeginForm("ComplaintUpdate", "Complaint", FormMethod.Post))
+{   @Html.HiddenFor(c=>c.ClientId)
+    @Html.HiddenFor(c=>c.Id)
+    @Html.HiddenFor(c=>c.CreateDate)
+   <h6>Başlık</h6>
+    @Html.TextBoxFor(c => c.Title, new { @class = "form-control" , @required  = "required" ,@maxlength="50" })
+    <br />
+     <h6>İçerik</h6>
+    @Html.TextAreaFor(c => c.Content, new { @class = "form-control", @required  = "required" ,@maxlength="200" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

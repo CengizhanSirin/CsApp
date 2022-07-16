@@ -1,0 +1,39 @@
+﻿@using CsApp.Application.Dto
+@model List<ClientWithComplaintJoinDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Şikayet Alanı</h2>
+<br />
+
+
+<form asp-controller="Complaint">
+
+    <table class="table table-bordered" style="margin-top: 20px">
+        <tr>
+            <th>Müşteri Adı</th>
+            <th>Müşteri Soyadı</th>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>Tarih</th>
+            <th>Güncelle</th>
+            <th>Yazdır</th>
+        </tr>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Name</td>
+                <td>@u.Surname</td>
+                <td>@u.Title</td>
+                <td>@u.Content</td>
+                <td>@u.CreateDate.ToShortDateString()</td>
+                <td><a asp-action="BringComplaint" asp-route-id="@u.Id" class="btn btn-success">Güncelle</a></td>
+                <td><a asp-action="Print" asp-route-id="@u.Id" class="btn btn-danger">Yazdır</a> </td>
+            </tr>
+        }
+
+    </table>
+</form>

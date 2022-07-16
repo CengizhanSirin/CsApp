@@ -1,0 +1,32 @@
+﻿@model  CsApp.Application.Dto.ClientViewDto
+@{
+    ViewData["Title"] = "Bring";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h1>Müşteri Bilgisi Güncelle</h1>
+<br />
+@using (Html.BeginForm("ClientUpdate", "Client", FormMethod.Post))
+{
+    @Html.HiddenFor(c=>c.Id)
+    @Html.HiddenFor(c=>c.CreateDate)
+   <h6>Ad</h6>
+    @Html.TextBoxFor(c => c.Name, new { @class = "form-control" , @required  = "required" ,@maxlength="50" })
+    <br />
+     <h6>Soyad</h6>
+    @Html.TextBoxFor(c => c.Surname, new { @class = "form-control" , @required  = "required" ,@maxlength="50"})
+    <br />
+    <h6>Email</h6>
+    @Html.TextBoxFor(c => c.Email, new { @class = "form-control", @required  = "required" ,@maxlength="60" })
+    <br />
+     <h6>Cinsiyet</h6>
+    @Html.TextBoxFor(c => c.Gender, new { @class = "form-control", @required  = "required" ,@maxlength="5" })
+    <br />
+    <h6>Telefon</h6>
+    @Html.TextBoxFor(c => c.PhoneNumber, new { @class = "form-control", @required  = "required" ,@maxlength="20"})
+    <br />
+     <h6>Adres</h6>
+    @Html.TextAreaFor(c => c.Address, new { @class = "form-control", @required  = "required" ,@maxlength="160" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

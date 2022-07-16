@@ -1,0 +1,55 @@
+﻿@using CsApp.Application.Dto
+@model List<ClientViewDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("Index", "Client", FormMethod.Get))
+{
+    <p>
+        Müşteri Telefon: @Html.TextBox("phoneNumber")
+        <input class="btn btn-info" type="submit" value="Ara" />
+    </p>
+}
+<br />
+
+<form asp-controller="Client">
+
+    <table class="table table-bordered" style="margin-top: 20px">
+        <tr>
+            <th>Adı</th>
+            <th>Soyad</th>
+            <th>Email</th>
+            <th>Cinsiyet</th>
+            <th>Telefon</th>
+            <th>Adres</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Şikayetler</th>
+            <th>Şikayet Ekle</th>
+            
+        </tr>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Name</td>
+                <td>@u.Surname</td>
+                <td>@u.Email</td>
+                <td>@u.Gender</td>
+                <td>@u.PhoneNumber</td>
+                <td>@u.Address</td>
+                <td><button asp-action="ClientDelete" asp-route-id="@u.Id" onclick="return confirm('Silmek İstediğinize Emin Misiniz?')" class="btn btn-danger btn-sm">Sil</button></td>
+                <td><a asp-action="Bring"  asp-route-id="@u.Id" class="btn btn-success">Güncelle</a></td>
+                <td><a asp-controller="Complaint" asp-action="GetBringOneComplaint"  asp-route-id="@u.Id" class="btn btn-warning">Şikayetler</a></td>
+                <td><a asp-controller="Complaint" asp-action="ComplaintAdd"  asp-route-id="@u.Id" class="btn btn-info">Ekle</a></td>
+
+            </tr>
+        }
+
+    </table>
+
+    <a class="btn btn-info" asp-action="ClientAdd">Yeni Müşteri Ekle</a>
+
+</form>
